@@ -1,0 +1,17 @@
+<h2>Log of in</h2>
+
+<%= render 'partials/errors' %>
+
+<form action="<%= login_path %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<% form_authenticity_token %>">
+
+    <label for="">Email</label>
+    <input type="email" name="email">
+
+    <label for="">Password</label>
+    <input type="password" name="password">
+
+
+    <button type="submit">Login</button>
+
+</form>
