@@ -1,0 +1,39 @@
+
+        <li><a href="/logout"><span class=""></span> Logout</a></li>
+
+    <div> 
+      <h1>Hi <%= @user.name %>!</h1> 
+      <h3>This is<%= @user.alias %> group</h3>
+      <hr>
+      <div>
+      <h3>Here are the Organizations you may like:</h3>
+		      <% @ideas.each do |idea| %>
+		      	<div class="col-sm-12 well"></div>
+				      <p><a href = '/ideas/<%= idea.id %>'><%= idea.user.alias %> </a></br> <%= idea.message %></p>
+								<form action = '/ideas/<%= idea.id %>/like' method = 'post'>
+								<input type= 'hidden' name = 'authenticity_token' value = '<%= form_authenticity_token %>'>
+								<input type = 'hidden' name = 'user_id' value = '<%= @user.id %>'>
+								<a> <%= idea.likes.count %> member</a>
+								<input type = 'submit' name = 'like' value = 'Join'>
+
+							</form>
+							<div style="border-top:1px solid black"></div>
+							<% if @user.id == idea.user_id %>
+							<form action = '/ideas/<%= idea.id %>/delete' method = 'post'>
+								<input type= 'hidden' name = 'authenticity_token' value = '<%= form_authenticity_token %>'>
+								<input type= 'hidden' name = '_method' value= 'delete'>
+								<input type = 'submit' name = 'delete' value = 'Delete Group'>
+							</form>
+							<% end %>	  	
+						</div>
+						<% end %>
+					</div>
+      <p>Describe your Organization</p>
+	      	<div>
+		      <form class="form-register" action ='/ideas/add_idea' method ='post'>
+					  <input type= 'hidden' name = 'authenticity_token' value = '<%= form_authenticity_token %>'>
+					  <input type = 'hidden' name = 'user_id' value = '<%= @user.id %>'>
+					  <textarea class="form-control" rows="6" name="message"></textarea>
+					  <button type='submit' class='btn btn-primary btn-md btn-block'>Create</button>
+					</form>
+				</div>

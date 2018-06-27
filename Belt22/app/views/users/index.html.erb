@@ -1,0 +1,27 @@
+<body>
+	<div>
+		<div>
+			<div>
+				<h2>Register</h2>
+					<form class="form-register" action ="/users/register" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<input placeholder="Name" type="text" name="user[name]"><br>
+						<input placeholder="Group Name" type="text" name="user[alias]"> Create your group here!!<br>
+						<input placeholder="Email" type="text" name="user[email]"><br>
+						<input placeholder="Password" type="password" name="user[password]"><br>
+						<input placeholder="Confirm Password" type="password" name="user[password_confirmation]"><br>
+						<button type='submit' class='btn btn-primary btn-md btn-block'>Create Account</button>
+					</form>
+			</div>
+			<div>
+				<h2 class="form-register-heading">Login</h2>
+				<form class="form-register" action="/users/login" method="post">
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<input placeholder="Email" type="text" name="email"><br>
+					<input placeholder="Password" type="password" name="password"><br>
+					<button type="submit" class="btn btn-primary btn-md btn-block">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>

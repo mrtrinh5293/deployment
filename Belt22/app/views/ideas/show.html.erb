@@ -1,0 +1,24 @@
+<div id = 'container'>
+	
+	<div id = 'header'>
+		<a href="/ideas/index">DashBoard</a>
+		<a href="/logout">Logout</a>
+		<h1>Created by: <%= @user_that_created_post.user.name %></h1> </br> Description: <%= @idea_by_id.message %> </h1>
+	</div>
+
+
+			<% if @likes_by_idea_id.count != 0 %>
+				<h2></h2>
+				<table>
+					<tr>
+						<th>Members</th>
+					</tr>
+					<% @likes_by_idea_id.each do |like| %>
+					<tr>
+						<td><%= like.user.name %></td>
+					</tr>
+					<% end %>
+				</table>
+			<% end %>
+	</div>
+
